@@ -159,10 +159,6 @@ ffmpeg编码：https://github.com/kewlbear/FFmpeg-iOS-build-script
 
 关于如果想给视频增加一些特殊效果，例如增加滤镜等，一般在编码前给使用滤镜库，但是这样也会造成一些耗时，导致上传视频数据有一定延时。
 
-
-
-
-
 ![HLS工作流程](./images/hls-flow.jpg)
 
 2.1 三个大部分的解析
@@ -250,7 +246,7 @@ Note如果你的扩展名是.m3u,并且系统支持.mp3文件，
 。如果结束标记不出现，该索引就是用于持续广播的。客户端会定期的加载一些新的索引文件。
 ​客户端会从新更新的索引文件中去查找加密密钥并且将关联的URL加入到请求队列中去。
 
-![HLs协议](./images/hls-protocol.png)
+![HLS协议](./images/hls-protocol.png)
 
 - M3U8 是索引会有几个片段
 - Safari 浏览器识别 M3U8文件
@@ -278,8 +274,8 @@ Note如果你的扩展名是.m3u,并且系统支持.mp3文件，
 #EXTM3U
 #EXT-X-VERSION:6 版本声明
 #EXT-X-TARGETDURATION:10 默认视频时长
-#EXT-X-MEDIA-SEQUENCE:26 片段
-#EXTINF:9.901,
+#EXT-X-MEDIA-SEQUENCE:26 片段序号
+#EXTINF:9.901, 下面索引的片段
 http://media.example.com/wifi/segment26.ts
 #EXTINF:9.901,
 http://media.example.com/wifi/segment27.ts
@@ -317,9 +313,15 @@ http://media.example.com/wifi/segment2.ts
 ```
 
 - ![ts文件](./images/ts.png)
-- PAT包 -> PMT 包
+- 第一个TS文件PAT包查找PMT 包
+- PES 中哪些是音频或视频
+
+- 浏览器解析视频，需要知道音频帧和视频帧。PES中哪块是音频或视频，而且连续波动快视频需要N帧来处理，怎么找到这些帧。PES文件先找PAT，在找PMT，再找TS文件，然后TS文件按照视频和音频分类在把连续相连的TS包组成一个帧，再相连再组成一个帧。有哪些TS包组成一个帧？这个需要解析TS规范，TS中有一个HEADER会告诉你这些信息。
 
 #### RTMP 协议(.flv)
+
+
+
 
 #### HTTP-FLV 协议(.flv)
 
