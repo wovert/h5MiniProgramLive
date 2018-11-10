@@ -320,12 +320,22 @@ http://media.example.com/wifi/segment2.ts
 
 #### RTMP 协议(.flv)
 
+> Real Time Messaging Protocol (实时消息传输协议)的首字母缩写。基于TCP，是一个协议族，包括RTMP基本协议以及RTMPT/RTMPS/RTMPE等多种变种。RTMP是一种设计用来进行实时数据通信的网络协议，主要用来在 Flash、AIR 平台和支持RTMP协议的流媒体/交互服务器之间进行音视频和数据通信。
 
-
+![RTMP协议流程](./images/rtmp.png)
 
 #### HTTP-FLV 协议(.flv)
 
-## video 讲解
+![HTTP-FLV协议流程](./images/http-flv.png)
+
+1. 在一定程度上避免防火墙的干扰（例如：有的机房只允许80端口通过）
+2. 兼容 HTTP 302跳转，做到灵活调度
+3. 可以使用 HTTPS做加密通道
+4. 支持移动端(Android, IOS)
+
+## video
+
+
 
 ## 直播源的制作
 
