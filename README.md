@@ -335,7 +335,10 @@ http://media.example.com/wifi/segment2.ts
 
 ## video
 
+### property/method
 
+- 忌讳：防止视频下载
+  - `controlslist="nodownload"`
 
 ## 直播源的制作
 
