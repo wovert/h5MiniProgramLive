@@ -338,7 +338,13 @@ http://media.example.com/wifi/segment2.ts
 ### property/method
 
 - 忌讳：防止视频下载
-  - `controlslist="nodownload"`
+  - `controlslist="nodownload nofullscreen"`
+- 贴图: `poster`
+- 自动播放：`autoplay`
+  - 移动端必须静音状态下才能自动播放
+- 静音状态：`muted`
+- 循环播放：`loop`
+- 预加载：`preload`
 
 ## 直播源的制作
 
